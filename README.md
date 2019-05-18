@@ -1,0 +1,1 @@
+# SMNIST_proto
