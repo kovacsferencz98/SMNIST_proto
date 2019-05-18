@@ -17,8 +17,6 @@ mx.random.seed(43)
 # Set the compute context
 ctx = mx.cpu()
 
-
-
 #Load the data
 os.listdir()
 os.chdir('E:\smnist')
@@ -42,7 +40,6 @@ batch_size = 100
 train_iter = mx.io.NDArrayIter(train_data, train_labels, batch_size, shuffle=True)
 val_iter = mx.io.NDArrayIter(test_data, test_labels, batch_size)
 
-
 data = mx.sym.var('data')
 # first conv layer
 conv1 = mx.sym.Convolution(data=data, kernel=(5,5), num_filter=32)
@@ -59,11 +56,12 @@ flatten = mx.sym.flatten(data=pool2)
 fc1 = mx.symbol.FullyConnected(data=flatten, num_hidden=1024)
 tanh3 = mx.sym.Activation(data=fc1, act_type="relu")
 dropout = mx.sym.Dropout(data=tanh3, p=0.5)
+
 # second fullc
 fc2 = mx.sym.FullyConnected(data=dropout, num_hidden=10)
+
 # softmax loss
 lenet = mx.sym.SoftmaxOutput(data=fc2, name='softmax')
-
 
 
 lenet_model = mx.mod.Module(symbol=lenet, context=ctx)
