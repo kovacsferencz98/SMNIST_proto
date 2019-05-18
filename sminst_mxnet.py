@@ -8,7 +8,6 @@ import numpy as np
 import gzip
 import os, sys
 import mxnet as mx
-mnist = mx.test_utils.get_mnist()
 import logging
 logging.getLogger().setLevel(logging.INFO)
 
