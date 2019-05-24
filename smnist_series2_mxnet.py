@@ -8,7 +8,6 @@ import numpy as np
 import gzip
 import os, sys
 import mxnet as mx
-mnist = mx.test_utils.get_mnist()
 import logging
 logging.getLogger().setLevel(logging.INFO)
 
@@ -17,8 +16,6 @@ mx.random.seed(43)
 
 # Set the compute context
 ctx = mx.cpu()
-
-
 
 #Load the data
 os.listdir()
@@ -42,7 +39,6 @@ test_data = np.reshape(test_data, (-1,1,10,10))
 batch_size = 100
 train_iter = mx.io.NDArrayIter(train_data, train_labels, batch_size, shuffle=True)
 val_iter = mx.io.NDArrayIter(test_data, test_labels, batch_size)
-
 
 data = mx.sym.var('data')
 # first conv layer
@@ -79,8 +75,3 @@ test_iter = mx.io.NDArrayIter(test_data, test_labels, batch_size)
 acc = mx.metric.Accuracy()
 lenet_model.score(test_iter, acc)
 print(acc)
-
-
-
-
-
